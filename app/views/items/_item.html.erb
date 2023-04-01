@@ -1,17 +1,17 @@
 <div id="<%= dom_id item %>">
-  <p>
+  <h3>
     <strong>Name:</strong>
     <%= item.name %>
-  </p>
+  </h3>
 
   <p>
     <strong>Active:</strong>
-    <%= item.active %>
+    <%= item.active ? "✅" : "❌" %>
   </p>
 
   <p>
     <strong>Borrowed:</strong>
-    <%= item.borrowed %>
+    <%= item.borrowed ? "✅" : "❌" %>
   </p>
 
 </div>
