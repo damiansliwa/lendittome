@@ -8,9 +8,11 @@
 
     <%= stylesheet_link_tag "application.bootstrap", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= hotwire_livereload_tags if Rails.env.development? %>
   </head>
 
   <body>
-    <%= yield %>
+  <h1>lenditto.me</h1>
+  <%= yield %>
   </body>
 </html>
