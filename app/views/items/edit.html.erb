@@ -1,10 +1,38 @@
 <h1>Editing item</h1>
 
-<%= render "form", item: @item %>
+<%= form_with(model: @item) do |form| %>
+  <% if @item.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
 
-<br>
+      <ul>
+        <% @item.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<div>
-  <%= link_to "Show this item", @item %> |
-  <%= link_to "Back to items", items_path %>
-</div>
+  <div>
+    <%= form.label :name, style: "display: block", class: 'form-label' %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-check">
+    <%= form.label :active, class: 'form-check-label' %>
+    <%= form.check_box :active, class: 'form-check-input' %>
+  </div>
+
+  <div class="form-check">
+    <%= form.label :borrowed, class: 'form-check-label' %>
+    <%= form.check_box :borrowed, class: 'form-check-input' %>
+  </div>
+
+  <div>
+    <%= form.submit "Update", class: 'btn btn-success' %>
+    <%= link_to "Show item", @item, class: 'btn btn-primary' %>
+    <%= link_to "Back to the list", items_path, class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+
